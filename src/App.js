@@ -1,10 +1,17 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import ThemeProvider from './theme';
+import Login from './Pages/Login/Login';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hammad</h1>
-    </div>
+   <>
+   <BrowserRouter>
+   <ThemeProvider>
+   <Login/> 
+   </ThemeProvider>
+   </BrowserRouter>
+   </>
   );
 }
 
