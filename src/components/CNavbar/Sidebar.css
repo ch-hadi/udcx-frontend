@@ -1,0 +1,43 @@
+.sidebar {
+    width: 250px; /* Set the width of the sidebar */
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    /* background-color: #b0aeae; Set the background color of the sidebar */
+    color: #fff; /* Set the text color */
+    padding: 0px 20px;
+    border-right: 1px solid #d4e2ef
+}
+/* .heading{
+    width: 100%;
+    text-align: center;
+} */
+.sidebar-header {
+    padding: 10px;
+    text-align: center;
+    background-color: #555; /* Set header background color */
+     border-bottom: none;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+     border-bottom: none;
+     display: flex;
+     flex-direction: column;
+}
+
+.sidebar-menu .li {
+    padding: 10px 0px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-bottom: none;
+}
+
+.sidebar-menu .li:hover {
+    /* box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+
+box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.4);
+background-color: #555; Set hover background color */
+}
