@@ -47,4 +47,15 @@ background-color: #555; Set hover background color */
     right: 0;
     left: 0;
     border-top: 1px solid rgba(227, 225, 225, 0.4);
+    display: flex;
+    justify-content: space-between;
+    p{
+        color: rgb(184, 180, 180);
+        font-size: 12px;
+        padding: 3px 0px;
+    }
+    .title{
+        font-weight: bold;
+        color: rgb(54, 54, 54);
+    }
 }

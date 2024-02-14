@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BeakerIcon, RectangleGroupIcon } from '@heroicons/react/24/solid'
+import { RectangleGroupIcon } from '@heroicons/react/24/solid'
 import './Sidebar.css'
 import CIcon from '../CIcon/CIcon';
 import { useTheme } from '@mui/material/styles';
+import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 
 const Sidebar = () => {
     const theme = useTheme();
@@ -23,14 +24,20 @@ const Sidebar = () => {
                 {/* </li> */}
             </ul>
             <div className='profile'>
-                <div>
-                    <img
-                        style={{ height: 24, borderRadius: 15 }}
-                        src="./assets/images/user.png"
-                    />
-                </div>
-                <div style={{}}>
-
+                <div style={{ width: '100%', display: 'flex', alignItems: 'center', padding: '20px 0px', justifyContent: 'center' }}>
+                    <div>
+                        <img
+                            style={{ height: 35, borderRadius: 25 }}
+                            src="./assets/images/profile.png"
+                        />
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', margin: '0px 15px' }}>
+                        <p className='title'>Nicolas Fry</p>
+                        <p> Admin</p>
+                    </div>
+                    <div style={{ width: "30px", color: 'rgb(184, 180, 180)', cursor: 'pointer' }}>
+                        <CIcon icon={<EllipsisHorizontalIcon />} />
+                    </div>
                 </div>
             </div>
         </div>

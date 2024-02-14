@@ -7,12 +7,13 @@ import Products from './Pages/Products/Products';
 import { useState } from 'react';
 import Sidebar from './components/CNavbar/Sidebar';
 import { useTheme } from '@mui/material/styles';
+import CreateDeliverables from './Pages/Deliverable/CreateDeliverables';
 
 function App() {
   console.log('->', theme)
   const th = useTheme()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [deliverable, setDeliverable] = useState(false);
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
@@ -26,14 +27,21 @@ function App() {
       <ThemeProvider theme={theme} >
         <div style={{ display: 'flex', flex: 1, flexDirection: 'row', }}>
           {/* <div> */}
-          <Sidebar />
+          {!deliverable && <Sidebar />}
           {/* </div> */}
           <Routes>
             {/* <Route path="/" element={<Home />} /> */}
             <Route path="/users" element={<User />} />
-            <Route path="/products" element={<Products />} />
+            <Route path="/cd" element={<CreateDeliverables setDeliverable={setDeliverable} />} />
+            {/* <Route path="/create-deliverables" element={<CreateDeliverables setDeliverable={setDeliverable} />} /> */}
           </Routes>
         </div>
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          {/* <Route path="/users" element={<User />} />
+            <Route path="/products" element={<Products />} /> */}
+
+        </Routes>
       </ThemeProvider>
     </BrowserRouter>
   );
