@@ -41,3 +41,10 @@
 box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.4);
 background-color: #555; Set hover background color */
 }
+.profile{
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-top: 1px solid rgba(227, 225, 225, 0.4);
+}

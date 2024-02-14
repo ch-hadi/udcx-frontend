@@ -2,14 +2,15 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme/index'
-import Login from './Pages/Login/Login';
-import { Box } from '@mui/system';
 import User from './Pages/User/User';
 import Products from './Pages/Products/Products';
 import { useState } from 'react';
 import Sidebar from './components/CNavbar/Sidebar';
+import { useTheme } from '@mui/material/styles';
 
 function App() {
+  console.log('->', theme)
+  const th = useTheme()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
@@ -23,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme} >
-        <div style={{ display: 'flex', flex: 1, flexDirection: 'row' }}>
+        <div style={{ display: 'flex', flex: 1, flexDirection: 'row', }}>
           {/* <div> */}
           <Sidebar />
           {/* </div> */}

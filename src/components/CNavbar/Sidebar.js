@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { BeakerIcon, RectangleGroupIcon } from '@heroicons/react/24/solid'
 import './Sidebar.css'
 import CIcon from '../CIcon/CIcon';
+import { useTheme } from '@mui/material/styles';
+
 const Sidebar = () => {
+    const theme = useTheme();
     return (
         <div className='sidebar'>
             <div className='heading'>
@@ -19,6 +22,17 @@ const Sidebar = () => {
                 <Link className='li' style={{ textDecoration: 'none' }} to="/products">Products</Link>
                 {/* </li> */}
             </ul>
+            <div className='profile'>
+                <div>
+                    <img
+                        style={{ height: 24, borderRadius: 15 }}
+                        src="./assets/images/user.png"
+                    />
+                </div>
+                <div style={{}}>
+
+                </div>
+            </div>
         </div>
     );
 };
