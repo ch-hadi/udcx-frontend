@@ -8,9 +8,11 @@ import { useState } from 'react';
 import Sidebar from './components/CNavbar/Sidebar';
 import { useTheme } from '@mui/material/styles';
 import CreateDeliverables from './Pages/Deliverable/CreateDeliverables';
+import { useStyles } from './theme/MainTheme';
+import { Button } from '@mui/material';
 
 function App() {
-  console.log('->', theme)
+  const classes = useStyles();
   const th = useTheme()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [deliverable, setDeliverable] = useState(false);
@@ -21,7 +23,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
-
+  console.log(classes)
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme} >
@@ -39,7 +41,7 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
           {/* <Route path="/users" element={<User />} />
-            <Route path="/products" element={<Products />} /> */}
+          <Route path="/products" element={<Products />} /> */}
 
         </Routes>
       </ThemeProvider>
