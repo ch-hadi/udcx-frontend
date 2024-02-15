@@ -12,10 +12,10 @@ const CTextField = (props) => {
       id="outlined-basic"
       placeholder="Search"
       variant="outlined"
-      name="email"
+      name={props.name}
       value={props.value}
       onChange={props.onChange}
-      onBlure={props.onBlure}
+      onBlur={props.onBlure}
       error={props.error}
       helperText={props.helperText}
     />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import * as yup from "yup"; // Import Yup for validation schema
-
+import { api } from "../../utils/axiosInterceptor/axiosInterceptor";
 import { useNavigate } from "react-router-dom";
 import CHeader from "../../components/CNavbar/CHeader";
 import { useStyles } from "../../theme/MainTheme";
@@ -25,10 +25,11 @@ const CreateDeliverables = (props) => {
   const formik = useFormik({
     initialValues: { email: "", password: "" },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log(JSON.stringify(values, null, 2));
+    onSubmit: (e) => {
+      console.log("hi", e);
     },
   });
+
   const initialValues = {
     user_name: "",
     price: "",
@@ -51,11 +52,21 @@ const CreateDeliverables = (props) => {
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
-            onBlure={formik.handleBlur}
+            onBlur={formik.handleBlur}
             error={Boolean(formik.errors.email)}
             size="small"
             width="100%"
             helperText={formik.errors.email}
+          />
+          <CTextField
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={Boolean(formik.errors.password)}
+            size="small"
+            width="100%"
+            helperText={formik.errors.password}
           />
           <Button variant="outlined" type="submit">
             Submit
