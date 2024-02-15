@@ -20,7 +20,7 @@ const Sidebar = () => {
                     <CIcon icon={<RectangleGroupIcon style={{}} />} /> Templates</Link>
                 {/* </li> */}
                 {/* <li> */}
-                <Link className='li' style={{ textDecoration: 'none' }} to="/products">Products</Link>
+                {/* <Link className='li' style={{ textDecoration: 'none' }} to="/products">Products</Link> */}
                 {/* </li> */}
             </ul>
             <div className='profile'>

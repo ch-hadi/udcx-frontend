@@ -5,7 +5,7 @@ const CTextField = (props) => {
     return (
         <TextField
             sx={{
-                width: '30%',
+                width: props.width ? props.width : '30%',
                 '& .MuiOutlinedInput-root': {
                     borderRadius: '5px',
                     border: 'none', // Remove the border
@@ -22,7 +22,7 @@ const CTextField = (props) => {
 
             }}
 
-            size={props.size} id="outlined-basic" placeholder="Search" variant="outlined" />
+            name={props.name} size={props.size} id="outlined-basic" placeholder="Search" variant="outlined" />
     )
 }
 
