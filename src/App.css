@@ -1,0 +1,14 @@
+.heading{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+.heading_content{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+._help{
+    font: 14px;
+}
