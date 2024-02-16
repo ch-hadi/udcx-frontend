@@ -6,7 +6,7 @@ const CHeader = () => {
   }}>
     <div className='heading'>
       <div className="heading_content">
-        <p style={{ fontStyle: 'italic', fontSize: 60, fontWeight: 500, color: '#2B579A', marginRight: '20px' }}>µDocx</p>
+        <p style={{ fontStyle: 'italic', fontSize: 40, fontWeight: 500, color: '#2B579A', marginRight: '10px 20px' }}>µDocx</p>
         <p style={{ color: '212529' }}>Create Deliverable</p>
       </div>
 

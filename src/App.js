@@ -13,7 +13,7 @@ import { Button } from '@mui/material';
 
 function App() {
   const classes = useStyles();
-  const th = useTheme()
+  // const th = useTheme()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [deliverable, setDeliverable] = useState(false);
   const handleLogin = () => {
@@ -23,39 +23,34 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
-  console.log(classes)
+  // console.log(classes)
+  console.log(deliverable)
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme} >
         <div style={{ display: 'flex', flex: 1, flexDirection: 'row', }}>
-          {/* <div> */}
           {!deliverable && <Sidebar />}
-          {/* </div> */}
           <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route path="/users" element={<User />} />
-            <Route path="/cd" element={<CreateDeliverables setDeliverable={setDeliverable} />} />
+            <Route path="/" element={<User />} />
+            {/* <Route path="/cd" element={<CreateDeliverables setDeliverable={setDeliverable} classes={classes}/>}/> */}
+            <Route path="/cd" element={<CreateDeliverables setDeliverable={setDeliverable} classes={classes} />} />
             {/* <Route path="/create-deliverables" element={<CreateDeliverables setDeliverable={setDeliverable} />} /> */}
           </Routes>
         </div>
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          {/* <Route path="/users" element={<User />} />
-          <Route path="/products" element={<Products />} /> */}
-
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
   );
 }
 
-const PrivateRoute = ({ element: Element, isLoggedIn, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      element={isLoggedIn ? <Element /> : <Navigate to="/login" />}
-    />
-  );
-};
+// const PrivateRoute = ({ element: Element, isLoggedIn, ...rest }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       element={isLoggedIn ? <Element /> : <Navigate to="/login" />}
+//     />
+//   );
+// };
 
 export default App;

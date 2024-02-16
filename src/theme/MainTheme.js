@@ -13,6 +13,34 @@ export const useStyles = makeStyles({
     color: {
         color: red[300],
         deep: deepOrange[300]
+    },
+    helperText: {
+        '& MuiFormHelperText-root': {
+            display: 'none !important'
+        }
+    },
+    link: {
+        textDecoration: 'none',
+        color: '#212529',
+        fontSize: '14px',
+        fontWeight: 500,
+        cursor: 'pointer'
+    },
+    generateButton: {
+        fontSize: '12px',
+        textTransform: 'capitalize !important',
+        padding: '5px 15px !important',
+        fontFamily: 'Inter !important',
+        borderRadius: 8,
+        '&:hover': {
+            background: '#2B279A !important'
+        }
+    },
+    footerButtons: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '24px 25px',
     }
 
 });

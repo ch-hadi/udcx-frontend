@@ -7,74 +7,121 @@ import CHeader from "../../components/CNavbar/CHeader";
 import CForm from "../../components/CForm/CForm";
 import { useStyles } from "../../theme/MainTheme";
 import CTextField from "../../components/CTextField/CTextField";
-import { Button } from "@mui/material";
+import { Button, Grid, Typography, Box } from "@mui/material";
+import CFooter from "../../components/CFooter/CFooter";
 
 const validationSchema = yup.object({
-  email: yup
-    .string("Enter your Email")
-    .email("Enter a valid Email")
-    .required("Email is Required"),
-  password: yup
-    .string("Enter your password")
-    .min(3, "Password should be of minimum 8 characters long")
-    .required("Password is Required"),
+  price: yup
+    .number("Enter your price")
+    .min(20000, "Price must be greater than 20,000")
+    .required("Price is Required"),
 });
 
 const CreateDeliverables = (props) => {
   const navigate = useNavigate();
   const classes = useStyles();
   const formik = useFormik({
-    initialValues: { email: "", password: "" },
+    initialValues: { deliverable_name: "", price: 0, activitiesList: "", ShortTermNextSteps: "" },
     validationSchema: validationSchema,
-    onSubmit: (e) => {
-      console.log("hi", e);
+    onSubmit: (values, { resetForm }) => {
+      // e.preventDefault();
+      // console.log("hi", e);
     },
   });
-
-  const initialValues = {
-    user_name: "",
-    price: "",
-  };
 
   const handleBack = () => {
     // Assuming you have a setDeliverable function in context or props
     props.setDeliverable(false);
     navigate("/");
   };
-
+  useEffect(() => {
+    props && props.setDeliverable(true)
+  }, [])
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', height: '100vh' }}>
       <CHeader />
-      <CForm />
-      <form onSubmit={formik.handleSubmit}>
-        <div
-          style={{ display: "flex", flexDirection: "column", width: "100%" }}
-        >
-          <CTextField
-            name="email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={Boolean(formik.errors.email)}
-            size="small"
-            width="100%"
-            helperText={formik.errors.email}
-          />
-          <CTextField
-            name="password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={Boolean(formik.errors.password)}
-            size="small"
-            width="100%"
-            helperText={formik.errors.password}
-          />
-          <Button variant="outlined" type="submit">
-            Submit
-          </Button>
-        </div>
-      </form>
+      <div
+        style={{ display: "flex", flexDirection: "column", width: "100%" }}
+      >
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container display={'block'} spacing={{ xs: 2, md: 1 }} padding={'20px'} columns={{ xs: 2, sm: 8, md: 12 }}>
+            <Grid item xs={2} sm={4} md={4} key={'index'}>
+              <Typography fontFamily={'inherit'} fontSize={{ sx: 10, md: 18 }} color={'#212529'}>
+                Fill in deliverable variables
+              </Typography>
+              <Typography fontFamily={'inherit'} fontSize={{ sx: 10, md: 13 }} fontWeight={300} color={'#ADB5BD'}>
+                Further instructions in one line
+              </Typography>
+            </Grid>
+            <Grid item xs={2} sm={4} md={4} key={'i3'}>
+              <Typography fontFamily={'inherit'} fontSize={{ sx: 10, md: 14 }} color={'#212529'} marginBottom={'8px'}>
+                Deliverable Name
+              </Typography>
+              <CTextField
+                name="deliverable_name"
+                value={formik.values.deliverable_name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                // error={Boolean(formik.errors.deliverable_name)}
+                size="small"
+                width="100%"
+                helperText={formik.errors.deliverable_name}
+                placeholder='Deliverable name'
+              />
+            </Grid>
+
+            <Grid item xs={2} sm={4} md={4} key={'i2'}>
+              <Typography fontWeight={'bold'} fontFamily={'inherit'} fontSize={{ sx: 10, md: 14 }} color={'#212529'} marginBottom={'8px'}>
+                ActivitiesList
+              </Typography>
+              <CTextField
+                name="activitiesList"
+                value={formik.values.activitiesList}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={Boolean(formik.errors.activitiesList)}
+                size="small"
+                width="100%"
+                helperText={formik.errors.activitiesList}
+                placeholder='Activities List'
+              />
+            </Grid>
+            <Grid item xs={2} sm={4} md={4} key={'i1'}>
+              <Typography fontWeight={'bold'} fontFamily={'inherit'} fontSize={{ sx: 10, md: 14 }} color={'#212529'} marginBottom={'8px'}>
+                Price {formik.values.price}
+              </Typography>
+              <CTextField
+                name="price"
+                value={formik.values.price}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={Boolean(formik.errors.price)}
+                size="small"
+                width="100%"
+                helperText={formik.errors.price}
+                placeholder='Price'
+              />
+            </Grid>
+            <Grid item xs={2} sm={4} md={4} key={'i1'}>
+              <Typography fontWeight={'bold'} fontFamily={'inherit'} fontSize={{ sx: 10, md: 14 }} color={'#212529'} marginBottom={'8px'}>
+                ShortTermNextSteps {formik.values.ShortTermNextSteps && formik.values.ShortTermNextSteps}
+              </Typography>
+              <CTextField
+                name="ShortTermNextSteps"
+                value={formik.values.ShortTermNextSteps}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={Boolean(formik.errors.ShortTermNextSteps)}
+                size="small"
+                width="100%"
+                helperText={formik.errors.ShortTermNextSteps}
+                placeholder='Short term next steps'
+              />
+            </Grid>
+          </Grid>
+          <CFooter onClick={() => formik.handleSubmit()} setDeliverable={props.setDeliverable} />
+        </Box>
+      </div>
     </div>
   );
 };
