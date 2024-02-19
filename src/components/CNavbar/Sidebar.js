@@ -15,7 +15,7 @@ const Sidebar = () => {
             </div>
             <ul className='sidebar-menu'>
                 {/* <li> */}
-                <Link className='li' style={{ color: '#2B579A', textDecoration: 'none', display: 'flex', fontSize: 13 }} to="/users">
+                <Link className='li' style={{ color: '#2B579A', textDecoration: 'none', display: 'flex', fontSize: 13 }} to="/create-deliverable">
 
                     <CIcon icon={<RectangleGroupIcon style={{}} />} /> Templates</Link>
                 {/* </li> */}
