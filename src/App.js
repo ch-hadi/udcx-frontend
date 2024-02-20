@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+
 import './App.css';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme/index'
-import User from './Pages/User/User';
+import Home from './Pages/Home/Home';
 import Products from './Pages/Products/Products';
 import { useState } from 'react';
 import Sidebar from './components/CNavbar/Sidebar';
@@ -11,32 +11,16 @@ import { useTheme } from '@mui/material/styles';
 import CreateDeliverables from './Pages/Deliverable/CreateDeliverables';
 import { useStyles } from './theme/MainTheme';
 import { Button } from '@mui/material';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { Auth0Provider, useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import Login from './Pages/Auth/Login';
-import { replace } from 'formik';
-import { useAuth0 } from "@auth0/auth0-react";
+import Logout from './Pages/Auth/Logout';
+import Profile from './Pages/Profile/Profile';
 
 function App() {
+  // const navigate = useNavigat();
   const classes = useStyles();
-  const { loginWithRedirect, logout } = useAuth0();
+  const { loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0();
   // const th = useTheme()
-  const [isLogin, setIsLogin] = useState(false);
-  const [user, setUser] = useState('')
-  // const th = useTheme()
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [deliverable, setDeliverable] = useState(false);
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    setUser(user);
-    return () => { };
-  }, [])
   return (
     <Auth0Provider
       domain="dev-wdeogp5deeh1u8mz.us.auth0.com"
@@ -45,26 +29,11 @@ function App() {
         redirect_uri: window.location.origin
       }}
     >
-      <BrowserRouter>
-        <ThemeProvider theme={theme} >
-          <div style={{ display: 'flex', flex: 1, flexDirection: 'row', }}>
-            {user && !deliverable && <Sidebar />}
-            {user && <Routes>
-              <Route path="/" element={<User />} />
-              {/* <Route path="/cd" element={<CreateDeliverables setDeliverable={setDeliverable} classes={classes}/>}/> */}
-              <Route path="/create-deliverable" element={<CreateDeliverables setDeliverable={setDeliverable} classes={classes} />} />
-              {/* <Route path="/create-deliverables" element={<CreateDeliverables setDeliverable={setDeliverable} />} /> */}
-            </Routes>}
-            {!user &&
-              <Routes>
-                <Route path="*" element={<Login />} render={(routeProps) => (isLoggedIn ? routeProps : <Navigate to="/" replace />)} />
-              </Routes>
-            }
-          </div>
-          <Routes>
-          </Routes>
-        </ThemeProvider>
-      </BrowserRouter>
+      {!isAuthenticated && <Login />}
+      <Profile />
+      {/* <Logout /> */}
+
+
     </Auth0Provider>
   )
 }
