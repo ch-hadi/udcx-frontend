@@ -36,6 +36,20 @@ export const useStyles = makeStyles({
             background: '#2B279A !important'
         }
     },
+    logoutButton: {
+        fontSize: '12px',
+        textTransform: 'capitalize !important',
+        padding: '5px 15px !important',
+        fontFamily: 'Inter !important',
+        borderRadius: 6,
+        background: '#2B279A !important',
+        color: '#fff',
+        '&:hover': {
+            background: 'transparent !important',
+            color: '#2B279A',
+            borderColor: '#2B279A'
+        }
+    },
     footerButtons: {
         display: 'flex',
         alignItems: 'center',

@@ -10,13 +10,11 @@ import { useStyles } from "../../theme/MainTheme";
 
 const Profile = () => {
     const classes = useStyles();
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated, isLoading, logout } = useAuth0();
     const [deliverable, setDeliverable] = useState(false);
 
     return (
         isAuthenticated && (
-
-
             <BrowserRouter>
                 <ThemeProvider theme={theme} >
                     <div style={{ display: 'flex', flex: 1, flexDirection: 'row', }}>
@@ -24,7 +22,6 @@ const Profile = () => {
                         {<Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/create-deliverable" element={<CreateDeliverables setDeliverable={setDeliverable} classes={classes} />} />
-
                         </Routes>}
 
                     </div>

@@ -5,8 +5,29 @@ import './Sidebar.css'
 import CIcon from '../CIcon/CIcon';
 import { useTheme } from '@mui/material/styles';
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import Logout from '../../Pages/Auth/Logout';
 
 const Sidebar = () => {
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+    // const onClickProp = () => {
+    //     setAnchorEl(event.currentTarget);
+    // }
+
     const theme = useTheme();
     return (
         <div className='sidebar'>
@@ -18,10 +39,6 @@ const Sidebar = () => {
                 <Link className='li' style={{ color: '#2B579A', textDecoration: 'none', display: 'flex', fontSize: 13 }} to="/create-deliverable">
 
                     <CIcon icon={<RectangleGroupIcon style={{}} />} /> Templates</Link>
-                {/* </li> */}
-                {/* <li> */}
-                {/* <Link className='li' style={{ textDecoration: 'none' }} to="/products">Products</Link> */}
-                {/* </li> */}
             </ul>
             <div className='profile'>
                 <div style={{ width: '100%', display: 'flex', alignItems: 'center', padding: '20px 0px', justifyContent: 'center' }}>
@@ -36,8 +53,20 @@ const Sidebar = () => {
                         <p> Admin</p>
                     </div>
                     <div style={{ width: "30px", color: 'rgb(184, 180, 180)', cursor: 'pointer' }}>
-                        <CIcon icon={<EllipsisHorizontalIcon />} />
+                        <CIcon icon={<EllipsisHorizontalIcon />} onClick={handleClick} />
                     </div>
+                    <Popover
+                        id={id}
+                        open={open}
+                        anchorEl={anchorEl}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                    >
+                        <Logout />
+                    </Popover>
                 </div>
             </div>
         </div>

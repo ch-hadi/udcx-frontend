@@ -19,7 +19,7 @@ const CFooter = (props) => {
                 <Link onClick={() => props.setDeliverable(false)} to={'/'} className={classes.link}>Back</Link>
             </div>
             <div>
-                <CButton onClick={() => props.onClick} backgroundColor='#2B579A' color='#fff' label='Generate' varient='contained' size='small' />
+                <CButton onClick={() => props.onClick()} className={classes.generateButton} backgroundColor='#2B579A' color='#fff' label='Generate' varient='contained' size='small' />
             </div>
         </div>
     </div>;
